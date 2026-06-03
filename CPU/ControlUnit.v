@@ -93,9 +93,8 @@ case (current_state)
                     memoryWrite=1;
                 end
             next_state=FETCH;
-
-            default next_state=RESET;
             end
+            default: next_state=RESET;
 endcase
 end
 

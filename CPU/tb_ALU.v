@@ -16,15 +16,19 @@ module tb_ALU;
         .error(error)    
     );
 initial begin
+    in1=8'd10;
+    in2=8'd5;
+    op=4'b0001;
+    invalid_data=1;
+end
+
+initial begin
     
         $fsdbDumpfile("teste_ALU.fsdb"); // Cria o arquivo
         $fsdbDumpvars(0, tb_ALU);       // Grava tudo do módulo tb_mux4
         //[Tamanho] ' [Base] [Valor]
 
-    in1=8'd10;
-    in2=8'd5;
-    op=4'b0001;
-    invalid_data=1;
+    
     #10;
 
     invalid_data=0;

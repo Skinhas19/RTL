@@ -11,28 +11,29 @@ module tb_registrador2;
         .D(D),
         .Q(Q)    
     );
+
     initial begin
         clk = 0; // Começa em baixo
         en=0;
+        rst=1;
+        D=16'd10;
     end
 
     always begin
-        #10 clk = ~clk; // Inverte a cada 5ns (Gera um período completo de 10ns)
+        #5 clk = ~clk; // Inverte a cada 5ns (Gera um período completo de 10ns)
     end
 initial begin
     
-        $fsdbDumpfile("teste_registrador2.fsdb"); // Cria o arquivo
-        $fsdbDumpvars(0, tb_registrador2);       // Grava tudo do módulo tb_mux4
-        //[Tamanho] ' [Base] [Valor]
+    $fsdbDumpfile("teste_registrador2.fsdb"); // Cria o arquivo
+    $fsdbDumpvars(0, tb_registrador2);       // Grava tudo do módulo tb_mux4
+    //[Tamanho] ' [Base] [Valor]
     
-    rst=1;
-    #15;
+    #10;
 
     rst=0;
     #10;    
     
     en=1;
-    D=16'd10;
     #10;           
 
     en=0;
@@ -40,5 +41,6 @@ initial begin
     #10;    
 
     $finish;
+
 end 
 endmodule

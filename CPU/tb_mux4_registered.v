@@ -20,11 +20,15 @@ module tb_mux4_registered;
         clk = 0; // Começa em baixo
         rst=0;
         wr_en=0;
-
+        sel=2'b00;
+        in1=8'd10;
+        in2=8'd20;
+        in3=8'd30;
+        in4=8'd40;
     end
 
     always begin
-        #10 clk = ~clk; // Inverte a cada 5ns (Gera um período completo de 10ns)
+        #5 clk = ~clk; // Inverte a cada 5ns (Gera um período completo de 10ns)
     end
 initial begin
     
@@ -33,33 +37,32 @@ initial begin
         //[Tamanho] ' [Base] [Valor]
     
 
-
-
-    in1=8'd10;
-    in2=8'd20;
-    in3=8'd30;
-    in4=8'd40;
-    
-    sel=2'b00;
-    #15;
-
-    sel=2'b01;
-    wr_en=1;
-    #10;    
-    
-    sel=2'b10;
-    #10;    
-
-    sel=2'b11;
-    wr_en=0;
     #10;
 
-    rst=1;
-    #10;
+    
+    
+    sel<=2'b00;
+    @(posedge clk);
 
-    rst=0;
-    wr_en=1;
-    sel=2'bx;
+    sel<=2'b01;
+    wr_en<=1;
+    @(posedge clk);   
+    
+    sel<=2'b10;
+    @(posedge clk);  
+
+    sel<=2'b11;
+    wr_en<=0;
+    @(posedge clk);
+
+    rst<=1;
+    @(posedge clk);
+
+    rst<=0;
+    wr_en<=1;
+    sel<=2'bx;
+    @(posedge clk);
+
     #10;
 
     $finish;

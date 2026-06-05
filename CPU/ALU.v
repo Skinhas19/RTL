@@ -19,10 +19,10 @@ if(invalid_data==1)begin
 end
 else begin
 case(op)
-    4'b0001:out=in1+in1;
-    4'b0010:out=in1-in2;
-    4'b0011:out=in1*in2;
-    4'b0100:begin 
+    4'b0000:out=in1+in2;
+    4'b0001:out=in1-in2;
+    4'b0010:out=in1*in2;
+    4'b0011:begin 
         if(in2==0)begin
     error=1;
     out=-1;

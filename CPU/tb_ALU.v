@@ -18,7 +18,7 @@ module tb_ALU;
 initial begin
     in1=8'd10;
     in2=8'd5;
-    op=4'b0001;
+    op=4'b0000;
     invalid_data=1;
 end
 
@@ -34,23 +34,23 @@ initial begin
     invalid_data=0;
     #10;    
     
-    op=4'b0010;
+    op=4'b0001;
     #10;           
 
-    op=4'b0011;
+    op=4'b0010;
     #10;    
 
-    op=4'b0100;
+    op=4'b0011;
     #10;
 
     in2=0;
     #10;
 
-    op=4'b0000;
+    op=4'b0100;
     #10;
 
     in2=8'd10;
-    op=4'b0010;
+    op=4'b0001;
     #10;
 
 

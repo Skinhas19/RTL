@@ -27,18 +27,17 @@ initial begin
         $fsdbDumpvars(0, tb_registrador);       // Grava tudo do módulo tb_mux4
         //[Tamanho] ' [Base] [Valor]
 
-    #15;
-
+    #10;
     rst=0;
-    @(posedge clk);    
     
+    @(negedge clk);    
     en=1;
-    @(posedge clk);           
 
+    @(negedge clk);           
     en=0;
     D=8'd20;
-    @(posedge clk);   
-
+      
+    @(negedge clk);   
     #10; 
 
     $finish;

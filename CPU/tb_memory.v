@@ -34,19 +34,19 @@ initial begin //bloco de estimulos onde é necessario utilizar atribuiçao n blo
     
     memoryWriteData<=16'd2;
     memoryAddress<=8'd10;
-    @(posedge clk);
+    @(negedge clk);
 
     memoryWrite<=1;
-    @(posedge clk);    
+    @(negedge clk);    
     
     memoryWrite<=0;
-    @(posedge clk);           
+    @(negedge clk);           
 
     memoryRead<=1;
-    @(posedge clk);    
+    @(negedge clk);    
 
     memoryAddress <= 8'd5; 
-    @(posedge clk);
+    @(negedge clk);
 
     #10;
     $finish;

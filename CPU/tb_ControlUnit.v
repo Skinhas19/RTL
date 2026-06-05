@@ -54,7 +54,7 @@ module tb_control;
         // --- TESTE 1: Sequência de Reset ---
         #15;
         rst = 0; // Libera o circuito do reset
-        @(posedge clk);
+        @(negedge clk);
         
         // --- TESTE 2: Instrução ADD (Opcode 3'b000) ---
         // Mux A = 2'b00, Mux B = 2'b01, Opcode = 3'b000 -> cmd_in = 7'b00_01_000
@@ -63,7 +63,7 @@ module tb_control;
         
         // Espera a instrução passar por FETCH, EXECUTE e atingir o STORE (cpu_rdy = 1)
         @(posedge cpu_rdy);
-        @(posedge clk); // Aguarda um ciclo para estabilizar
+        @(negedge clk); // Aguarda um ciclo para estabilizar
 
         // --- TESTE 3: Instrução NOP (Opcode 3'b111) ---
         // Muxes não importam, Opcode = 3'b111 -> cmd_in = 7'b00_00_111
@@ -71,7 +71,7 @@ module tb_control;
         cmd_in = 7'b00_00_111;
         
         @(posedge cpu_rdy);
-        @(posedge clk);
+        @(negedge clk);
 
         // --- TESTE 4: Instrução LOAD (Opcode 3'b101) ---
         // Mux A = 2'b10, Mux B = 2'b00, Opcode = 3'b101 -> cmd_in = 7'b10_00_101
@@ -79,15 +79,14 @@ module tb_control;
         cmd_in = 7'b10_00_101;
         
         @(posedge cpu_rdy);
-        @(posedge clk);
-
+        @(negedge clk);
         // --- TESTE 5: Instrução STORE (Opcode 3'b110) ---
         // Mux A = 2'b01, Mux B = 2'b10, Opcode = 3'b110 -> cmd_in = 7'b01_10_110
         $display("[TB] Injetando instrucao: STORE");
         cmd_in = 7'b01_10_110;
         
         @(posedge cpu_rdy);
-        @(posedge clk);
+       @(negedge clk);
 
         // --- TESTE 6: Condição de Erro no Loop de Feedback (invalid_data) ---
         // Força p_error em alto e manda ler do canal de feedback (Mux A = 2'b11)

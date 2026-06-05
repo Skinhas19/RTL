@@ -31,14 +31,14 @@ initial begin
     #10;
 
     rst=0;
-    #10;    
+    @(negedge clk);    
     
     en=1;
-    #10;           
+    @(negedge clk);           
 
     en=0;
     D=16'd20;
-    #10;    
+    @(negedge clk);    
 
     $finish;
 

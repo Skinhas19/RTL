@@ -42,26 +42,26 @@ initial begin
     
     
     sel<=2'b00;
-    @(posedge clk);
+    @(negedge clk);
 
     sel<=2'b01;
     wr_en<=1;
-    @(posedge clk);   
+    @(negedge clk);   
     
     sel<=2'b10;
-    @(posedge clk);  
+    @(negedge clk);  
 
     sel<=2'b11;
     wr_en<=0;
-    @(posedge clk);
+    @(negedge clk);
 
     rst<=1;
-    @(posedge clk);
+    @(negedge clk);
 
     rst<=0;
     wr_en<=1;
     sel<=2'bx;
-    @(posedge clk);
+    @(negedge clk);
 
     #10;
 

@@ -72,11 +72,11 @@ case (current_state)
 
             EXECUTE: begin
                 case(cmd_opcode)
-                3'b000,3'b001,3'b010,3'b011 begin //ADD,SUB,MUL,DIV
+                3'b000,3'b001,3'b010,3'b011: begin //ADD,SUB,MUL,DIV
                     aluout_reg_en=1;
                     selmux2=0;
                 end
-                3'b101 begin    //LOAD
+                3'b101: begin    //LOAD
                     memoryRead=1;
                     selmux2=1;
                     aluout_reg_en=1;
